@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.padc.tunlinaung.burpplefoodstore.viewitems.ImageInFoodDetailsViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_food_details_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/coutinho"
+        android:scaleType="centerCrop"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:layout_gravity="center|bottom">
+
+        <TextView
+            android:id="@+id/tv_food_cateogry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/text_food_category"
+            android:paddingBottom="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="4dp"
+            android:text="COMMUNITY"
+            android:textColor="#FF1493"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_food_details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A Tasty Walk In A Park"
+            android:layout_below="@id/tv_food_cateogry"
+            android:layout_marginTop="4dp"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_food_details_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Savourworld puts 20 restaurants together on the science park map."
+            android:layout_centerInParent="true"
+            android:layout_below="@id/tv_food_details_title"
+            android:layout_alignLeft="@id/tv_food_details_title"
+            android:layout_alignRight="@id/tv_food_details_title"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="italic|bold"
+            android:textAlignment="center"
+            />
+
+    </RelativeLayout>
+
+</com.padc.tunlinaung.burpplefoodstore.viewitems.ImageInFoodDetailsViewItem>

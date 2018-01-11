@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_promotions_item_root"
+    android:layout_width="164dp"
+    android:layout_height="280dp"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_promotion_item"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:src="@drawable/coutinho"
+            android:scaleType="centerCrop"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_promotion_item_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BURPPLE EXCLUSIVE"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="78dp"
+                android:background="@drawable/text_promotion_category"
+                android:paddingLeft="8dp"
+                android:paddingTop="4dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="4dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"
+                />
+
+            <TextView
+                android:id="@+id/tv_promotion_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 -for- 1 Shabu Burger"
+                android:layout_below="@id/tv_promotion_item_category"
+                android:layout_alignLeft="@id/tv_promotion_item_category"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:lineSpacingExtra="4dp"
+                />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_promotion_item_title"
+                android:layout_alignLeft="@id/tv_promotion_item_title"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"
+                />
+
+            <TextView
+                android:id="@+id/tv_promotion_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TILL 31ST JAN '18"
+                android:layout_below="@id/divider"
+                android:layout_alignLeft="@id/divider"
+                android:layout_marginTop="12dp"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_promotion_item"
+            android:layout_alignParentBottom="true"
+            android:background="#FDD017">
+
+            <TextView
+                android:id="@+id/tv_promotion_item_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_promotion_item_description"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/tv_promotion_item_subdescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kent Ridge"
+                android:layout_below="@id/tv_promotion_item_description"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

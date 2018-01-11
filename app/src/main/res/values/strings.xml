@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BurppleFoodStore</string>
+    <string name="lbl_promotion_item_description">Wildfire Chicken &amp;... </string>
+    <string name="lbl_burpple_guide_item_status"><u>NEWLY OPENED</u></string>
 </resources>
