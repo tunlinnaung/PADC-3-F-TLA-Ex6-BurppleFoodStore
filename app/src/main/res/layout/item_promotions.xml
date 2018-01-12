@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/iv_promotion_item"
+            android:id="@+id/iv_guide_item"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:src="@drawable/coutinho"
@@ -80,7 +80,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_promotion_item"
+            android:layout_below="@id/iv_guide_item"
             android:layout_alignParentBottom="true"
             android:background="#FDD017">
 

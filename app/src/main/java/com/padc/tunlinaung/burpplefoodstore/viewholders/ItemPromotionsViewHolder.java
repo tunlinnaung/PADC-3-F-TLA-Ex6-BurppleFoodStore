@@ -5,7 +5,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.padc.tunlinaung.burpplefoodstore.R;
+import com.padc.tunlinaung.burpplefoodstore.data.vo.PromotionsVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,11 +19,11 @@ import butterknife.ButterKnife;
 public class ItemPromotionsViewHolder extends RecyclerView.ViewHolder
 {
 
-    @BindView(R.id.iv_promotion_item)
+    @BindView(R.id.iv_guide_item)
     ImageView ivPromotionItem;
 
     @BindView(R.id.tv_promotion_item_category)
-    TextView getTvPromotionItemCategory;
+    TextView tvPromotionItemCategory;
 
     @BindView(R.id.tv_promotion_item_title)
     TextView tvPromotionItemTitle;
@@ -33,7 +35,14 @@ public class ItemPromotionsViewHolder extends RecyclerView.ViewHolder
         super(itemView);
 
         ButterKnife.bind(this, itemView);
+    }
 
+    public void setPromotions(PromotionsVO promotionsVO) {
+        this.tvPromotionItemTitle.setText(promotionsVO.getTitle());
+        this.tvPromotionItemDate.setText(promotionsVO.getUntilTime());
 
+        Glide.with(ivPromotionItem.getContext())
+                .load(promotionsVO.getImage())
+                .into(ivPromotionItem);
     }
 }

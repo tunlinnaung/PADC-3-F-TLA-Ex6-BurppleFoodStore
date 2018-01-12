@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/iv_promotion_item"
+            android:id="@+id/iv_guide_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/coutinho"

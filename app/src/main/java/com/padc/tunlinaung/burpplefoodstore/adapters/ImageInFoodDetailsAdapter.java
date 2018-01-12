@@ -7,16 +7,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.padc.tunlinaung.burpplefoodstore.R;
+import com.padc.tunlinaung.burpplefoodstore.data.vo.FeaturesVO;
 import com.padc.tunlinaung.burpplefoodstore.viewitems.ImageInFoodDetailsViewItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by eidoshack on 1/5/18.
  */
 
 public class ImageInFoodDetailsAdapter extends PagerAdapter {
+
+    private List<FeaturesVO> mFeaturesList;
+
+    public ImageInFoodDetailsAdapter() {
+        mFeaturesList = new ArrayList<>();
+    }
+
     @Override
     public int getCount() {
-        return 5;
+        return mFeaturesList.size();
     }
 
     @Override
@@ -39,5 +50,9 @@ public class ImageInFoodDetailsAdapter extends PagerAdapter {
         container.removeView((View) object);
     }
 
+    public void setFeatures(List<FeaturesVO> features) {
+        this.mFeaturesList = features;
+        notifyDataSetChanged();
+    }
 
 }

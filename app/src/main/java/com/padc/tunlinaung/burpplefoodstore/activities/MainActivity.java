@@ -6,13 +6,23 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
+import com.padc.tunlinaung.burpplefoodstore.MMBurppleApp;
 import com.padc.tunlinaung.burpplefoodstore.R;
 import com.padc.tunlinaung.burpplefoodstore.adapters.BurppleGuidesAdapter;
 import com.padc.tunlinaung.burpplefoodstore.adapters.ImageInFoodDetailsAdapter;
 import com.padc.tunlinaung.burpplefoodstore.adapters.NewAndTrendingAdapter;
 import com.padc.tunlinaung.burpplefoodstore.adapters.PromotionsAdapter;
+import com.padc.tunlinaung.burpplefoodstore.data.models.GuidesModel;
+import com.padc.tunlinaung.burpplefoodstore.data.models.PromotionsModel;
+import com.padc.tunlinaung.burpplefoodstore.events.LoadedGuidesEvent;
+import com.padc.tunlinaung.burpplefoodstore.events.LoadedPromotionsEvent;
 import com.padc.tunlinaung.burpplefoodstore.viewholders.ItemPromotionsViewHolder;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                // TODO
             }
 
             @Override
@@ -81,16 +92,44 @@ public class MainActivity extends AppCompatActivity {
         rvPromotions.setLayoutManager(promotionLayoutManager);
         rvPromotions.setAdapter(mPromotionAdapter);
 
+        PromotionsModel.getObjInstance().loadPromotions();
+
         mBurppleGuidesAdapter = new BurppleGuidesAdapter();
         LinearLayoutManager burppleGuideLayoutManager = new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false);
         rvBurppleGuides.setLayoutManager(burppleGuideLayoutManager);
         rvBurppleGuides.setAdapter(mBurppleGuidesAdapter);
 
+        GuidesModel.getObjInstance().loadGuides();
+
         mNewAndTrendingAdapter = new NewAndTrendingAdapter();
         LinearLayoutManager newAndTrendingLayoutManager = new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false);
         rvNewAndTrending.setLayoutManager(newAndTrendingLayoutManager);
         rvNewAndTrending.setAdapter(mNewAndTrendingAdapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onPromotionsLoaded(LoadedPromotionsEvent event) {
+        Log.d(MMBurppleApp.LOG_TAG, "onPromotionsLoaded: " + event.getPromotions().size());
+        mPromotionAdapter.setPromotions(event.getPromotions());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onGuidesLoaded(LoadedGuidesEvent event) {
+        Log.d(MMBurppleApp.LOG_TAG, "onGuidesLoaded: " + event.getGuides().size());
+        mBurppleGuidesAdapter.setGuides(event.getGuides());
     }
 }
