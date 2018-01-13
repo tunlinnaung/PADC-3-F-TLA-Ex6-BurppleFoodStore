@@ -42,6 +42,9 @@ public class ImageInFoodDetailsAdapter extends PagerAdapter {
                 (ImageInFoodDetailsViewItem) LayoutInflater.from(container.getContext())
                                                             .inflate(R.layout.item_food_details_images, container, false);
         container.addView(viewItem);
+
+        viewItem.setFeature(mFeaturesList.get(position));
+
         return viewItem;
     }
 

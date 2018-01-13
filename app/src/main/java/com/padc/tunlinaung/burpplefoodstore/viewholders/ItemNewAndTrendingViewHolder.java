@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.padc.tunlinaung.burpplefoodstore.R;
+import com.padc.tunlinaung.burpplefoodstore.data.vo.FeaturesVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

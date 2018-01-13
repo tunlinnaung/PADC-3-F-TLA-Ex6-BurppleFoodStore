@@ -51,6 +51,8 @@
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
                 android:lineSpacingExtra="4dp"
+                android:maxLines="2"
+                android:ellipsize="end"
                 />
 
             <View
@@ -73,6 +75,8 @@
                 android:layout_marginTop="12dp"
                 android:textSize="14sp"
                 android:textColor="@android:color/white"
+                android:maxLines="1"
+                android:ellipsize="end"
                 />
 
         </RelativeLayout>

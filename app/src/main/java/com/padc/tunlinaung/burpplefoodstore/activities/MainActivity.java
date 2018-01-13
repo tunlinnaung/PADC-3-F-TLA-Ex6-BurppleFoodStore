@@ -14,8 +14,10 @@ import com.padc.tunlinaung.burpplefoodstore.adapters.BurppleGuidesAdapter;
 import com.padc.tunlinaung.burpplefoodstore.adapters.ImageInFoodDetailsAdapter;
 import com.padc.tunlinaung.burpplefoodstore.adapters.NewAndTrendingAdapter;
 import com.padc.tunlinaung.burpplefoodstore.adapters.PromotionsAdapter;
+import com.padc.tunlinaung.burpplefoodstore.data.models.FeaturesModel;
 import com.padc.tunlinaung.burpplefoodstore.data.models.GuidesModel;
 import com.padc.tunlinaung.burpplefoodstore.data.models.PromotionsModel;
+import com.padc.tunlinaung.burpplefoodstore.events.LoadedFeaturesEvent;
 import com.padc.tunlinaung.burpplefoodstore.events.LoadedGuidesEvent;
 import com.padc.tunlinaung.burpplefoodstore.events.LoadedPromotionsEvent;
 import com.padc.tunlinaung.burpplefoodstore.viewholders.ItemPromotionsViewHolder;
@@ -64,27 +66,29 @@ public class MainActivity extends AppCompatActivity {
 
         mImageInFoodDetailsAdapter = new ImageInFoodDetailsAdapter();
         viewPager.setAdapter(mImageInFoodDetailsAdapter);
-        viewPager.setCurrentItem(1);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//        viewPager.setCurrentItem(1);
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                // TODO
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//                if (state < 5){
+//                    viewPager.setCurrentItem(0, true);
+//                } else if (state < 1 ) {
+//                    viewPager.setCurrentItem(5, true);
+//                }
+//            }
+//        });
 
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                // TODO
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                if (state < 5){
-                    viewPager.setCurrentItem(0, true);
-                } else if (state < 1 ) {
-                    viewPager.setCurrentItem(5, true);
-                }
-            }
-        });
+        FeaturesModel.getObjInstance().loadFeatures();
 
         mPromotionAdapter = new PromotionsAdapter();
         LinearLayoutManager promotionLayoutManager = new LinearLayoutManager(getApplicationContext(),
@@ -131,5 +135,11 @@ public class MainActivity extends AppCompatActivity {
     public void onGuidesLoaded(LoadedGuidesEvent event) {
         Log.d(MMBurppleApp.LOG_TAG, "onGuidesLoaded: " + event.getGuides().size());
         mBurppleGuidesAdapter.setGuides(event.getGuides());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onFeaturesLoaded(LoadedFeaturesEvent event) {
+        Log.d(MMBurppleApp.LOG_TAG, "onFeaturesLoaded: " + event.getFeatures().size());
+        mImageInFoodDetailsAdapter.setFeatures(event.getFeatures());
     }
 }
