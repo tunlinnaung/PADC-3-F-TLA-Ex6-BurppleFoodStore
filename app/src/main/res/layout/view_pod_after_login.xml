@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.padc.tunlinaung.burpplefoodstore.viewpod.AfterLoginViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="220dp">
+
+    <ImageView
+        android:id="@+id/iv_login_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/burpple_main"
+        android:scaleType="centerCrop"
+        />
+
+    <ImageView
+        android:id="@+id/iv_login_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/circle_user_man"
+        android:layout_marginLeft="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_xxlarge"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_medium_2"
+        />
+
+    <TextView
+        android:id="@+id/tv_login_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tun Lin Aung"
+        android:layout_below="@id/iv_login_profile"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small"
+        android:textColor="@color/black_full"
+        android:textSize="@dimen/text_regular_2x"
+        />
+
+    <TextView
+        android:id="@+id/tv_login_phoneno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+959450042454"
+        android:layout_below="@id/tv_login_username"
+        android:layout_alignLeft="@id/tv_login_username"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:textColor="@color/black_full"
+        android:textSize="@dimen/text_regular_2x"
+        />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_login_phoneno"
+        android:layout_alignParentEnd="true"
+        style="@style/accent_button"
+        android:layout_marginEnd="@dimen/margin_medium_3"
+        android:text="Logout"
+        android:foreground="@drawable/ripple_white"
+        />
+
+
+</com.padc.tunlinaung.burpplefoodstore.viewpod.AfterLoginViewPod>

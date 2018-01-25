@@ -4,9 +4,14 @@ import com.google.gson.Gson;
 import com.padc.tunlinaung.burpplefoodstore.events.LoadedFeaturesEvent;
 import com.padc.tunlinaung.burpplefoodstore.events.LoadedGuidesEvent;
 import com.padc.tunlinaung.burpplefoodstore.events.LoadedPromotionsEvent;
+import com.padc.tunlinaung.burpplefoodstore.events.SuccessLoginEvent;
+import com.padc.tunlinaung.burpplefoodstore.events.SuccessRegisterEvent;
 import com.padc.tunlinaung.burpplefoodstore.network.responses.GetFeaturesResponse;
 import com.padc.tunlinaung.burpplefoodstore.network.responses.GetGuidesResponse;
 import com.padc.tunlinaung.burpplefoodstore.network.responses.GetPromotionsResponse;
+import com.padc.tunlinaung.burpplefoodstore.network.responses.LoginDataAgent;
+import com.padc.tunlinaung.burpplefoodstore.network.responses.LoginResponse;
+import com.padc.tunlinaung.burpplefoodstore.network.responses.RegisterResponse;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -23,12 +28,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by techfunmmr on 1/12/2018.
  */
 
-public class RetrofitDataAgent implements FeaturesDataAgent, PromotionsDataAgent, GuidesDataAgent {
+public class RetrofitDataAgent implements FeaturesDataAgent, PromotionsDataAgent, GuidesDataAgent, LoginDataAgent {
 
     private static RetrofitDataAgent sObjInstance;
     private FeaturesApi mFeaturesApi;
     private PromotionsApi mPromotionsApi;
     private GuidesApi mGuidesApi;
+    private LoginApi mLoginApi;
 
     private RetrofitDataAgent() {
         OkHttpClient httpClient = new OkHttpClient.Builder()
@@ -47,6 +53,7 @@ public class RetrofitDataAgent implements FeaturesDataAgent, PromotionsDataAgent
         mFeaturesApi = retrofit.create(FeaturesApi.class);
         mPromotionsApi = retrofit.create(PromotionsApi.class);
         mGuidesApi = retrofit.create(GuidesApi.class);
+        mLoginApi = retrofit.create(LoginApi.class);
     }
 
     public static RetrofitDataAgent getObjInstance() {
@@ -120,6 +127,57 @@ public class RetrofitDataAgent implements FeaturesDataAgent, PromotionsDataAgent
 
             @Override
             public void onFailure(Call<GetGuidesResponse> call, Throwable t)
+            {
+            }
+        });
+    }
+
+    @Override
+    public void loginUser(String phoneNo, String password)
+    {
+        Call<LoginResponse> loginCall = mLoginApi.loginUser(phoneNo, password);
+
+        // capture the response
+        loginCall.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response)
+            {
+                LoginResponse loginResponse = response.body();
+
+                if (loginResponse != null) {
+                    SuccessLoginEvent event = new SuccessLoginEvent(loginResponse.getLoginUser());
+                    EventBus.getDefault()   // event object
+                            .post(event);   // post method
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t)
+            {
+            }
+        });
+    }
+
+    @Override
+    public void registerUser(String phoneNo, String password, String name)
+    {
+        Call<RegisterResponse> getRegisterUserResponseCall = mLoginApi.registerUser(phoneNo, password, name);
+
+        getRegisterUserResponseCall.enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response)
+            {
+                RegisterResponse getRegisterUserResponse = response.body();
+
+                if (getRegisterUserResponse != null) {
+                    SuccessRegisterEvent event = new SuccessRegisterEvent(getRegisterUserResponse.getRegisterUser());
+                    EventBus.getDefault()  // event object
+                            .post(event); // post method
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t)
             {
             }
         });

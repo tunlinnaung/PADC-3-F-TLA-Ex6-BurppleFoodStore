@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">BurppleFoodStore</string>
+    <string name="app_name">Burpple</string>
     <string name="lbl_promotion_item_description">Wildfire Chicken &amp;... </string>
     <string name="lbl_burpple_guide_item_status"><u>NEWLY OPENED</u></string>
+    <string name="lbl_register">Register</string>
+    <string name="lbl_login">Login</string>
+    <string name="lbl_forgot_password"><u>Forgot Password?</u></string>
+    <string name="lbl_remember_me">Remember me</string>
+    <string name="lbl_mobile_or_email">Mobile or Email</string>
+    <string name="lbl_password">Password</string>
+    <string name="new_account"><u>Create a New Account</u></string>
+    <string name="lbl_or">(or)</string>
+    <string name="lbl_agree_tc">I agree to <font color="#FFF">Terms</font> and <font color="#FFF">Privacy Policy</font>.</string>
 </resources>

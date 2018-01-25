@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.padc.tunlinaung.burpplefoodstore.viewpod.BeforeLoginViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="220dp">
+
+    <ImageView
+        android:id="@+id/iv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/burpple_main"
+        android:scaleType="centerCrop"
+        />
+
+    <Button
+        android:id="@+id/btn_to_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_register"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margin_medium_2"
+        style="@style/accent_button"
+        android:foreground="@drawable/ripple_white"
+        />
+
+    <Button
+        android:id="@+id/btn_to_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_login"
+        android:layout_above="@id/btn_to_register"
+        android:layout_alignRight="@id/btn_to_register"
+        style="@style/accent_button"
+        android:foreground="@drawable/ripple_white"
+        />
+
+</com.padc.tunlinaung.burpplefoodstore.viewpod.BeforeLoginViewPod>
